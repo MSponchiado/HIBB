@@ -1,0 +1,9 @@
+Ideias discutidas na ultima reuniao:
+
+- trocar a busca_local_InDE() pela "casca intervalar" da funcao tem_solucao() do arquivo branch-bound.c
+
+PROBLEMA: essa casca nao calcula a valoracao real das variaveis. O que seria devolvido para o InDE e como ele trabalharia com isso?
+
+- trocar a busca_local_InDE() por um DE real. Para isso basta criar uma funcao DE(lista dominios) que recebe como parametros os intervalos das variaveis e efetuaria a busca dentro destes intervalos (obs: o intervalo objetivo X seria setado antes para [i_min(X), i_min(X)]). Funcao de fitnnes desse DE: apenas o epsilon de satisfazer as restricoes.
+
+OBS: a estrategia acima tambem pode ser implementada no OGRe.

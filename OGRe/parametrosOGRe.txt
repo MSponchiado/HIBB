@@ -1,0 +1,32 @@
+
+Parâmetros do OGRe:
+
+EPSILON: epsilon considerado na comparação de ponto-flutuante (não confundir com o epsilon dos arcos da Epífita, que aqui eu chamo de ERRO). O default do EPSILON é DBL_EPSILON, mas pode tentar um valor maior, tipo 0.0000001.
+Possivelmente vai alterar alguns resultados.
+
+Quando os ponto-flutuantes comparados são grandes, pode ser melhor usar erro relativo ao invés do erro absoluto.
+A constante ERR_RELATIVO_VAL_GRANDES deve ser setada para TRUE para considerar também o erro relativo, ou FALSE para não considerar.
+O default é TRUE (e acredito ser a melhor opção).
+Nesse caso, EPSILON_REL é o epsilon considerado no erro relativo. O default também é DBL_EPSILON, mas um valor maior
+deve ser mais indicado.
+
+Para particionar intervalos com borda inf ou -inf, um valor máximo é definido pela constante MAX_REAL, com valor default 999999999999999.
+Também, para particionar intervalos com borda sendo MAX_REAL, defini a constante MAX_REAL_DIV_2 com valor 999999999. Como a distribuição dos
+ponto-flutuantes não é uniforme, essa definição tenta equilibrar um pouco a partição do intervalo. Acredito que não é necessário alterar
+esses valores, mas é preciso cuidar para que o valor INFINITO definido no DE seja maior que MAX_REAL.
+
+A consistência de arco pode ser Full ou Directional, definido pela constante FULL_CONSISTENCY (se ela for TRUE, então será usado Full, senão será
+usado Directional). No caso de usar Full, a constante MAX_STEPS_CONSISTENCY define o número máximo de passos. Em geral, Directional é mais rápida, mas
+a Full é mais precisa, evitando que apareçam muitos erros de consistência. O default é FULL_CONSISTENCY = TRUE e MAX_STEPS_CONSISTENCY = 1000000, mas este
+número pode ser menor.
+
+Por último, no B&B os principais parâmetros eram o ERRO e o DELTA, que são o erro máximo permitido nos arcos da Epífita e o tamanho mínimo ao qual
+serão particionados os intervalos. Esses parâmetros não são muito úteis pro DE, mas a constante ERRO é(ra) utilizada na função que busca solução (com
+a modificação de hoje pode ser que não precise mais). Os valores default são ERRO = 0.1 e DELTA = 0.1, mas em geral é interessante que DELTA <= ERRO.
+Junamente com o erro, tem a constante TIPO_ERRO que define a forma que o erro nos arcos será calculado e pode ser:
+- ERRO_ABSOLUTO
+- ERRO_RELATIVO
+- ERRO_ABS_REL (devolve o menor dentre os erros absoluto e relativo)
+
+Esse parâmetro é importante pro DE, pois interfere diretamente no vetor de epsilon devolvido e na composição do fitness.
+O default é ERRO_ABS_REL, mas atualmente está definido como ERRO_RELATIVO.
