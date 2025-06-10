@@ -56,6 +56,6 @@ Se você utilizar o HIBB em sua pesquisa, por favor, cite a seguinte tese:
 
 ## Agradecimentos
 
-[cite_start]Este trabalho foi desenvolvido com o apoio do **Programa de Pós-Graduação em Informática (PPGInf)** da **Universidade Federal do Paraná (UFPR)** e financiado pela **Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES)**. 
+Este trabalho foi desenvolvido com o apoio do **Programa de Pós-Graduação em Informática (PPGInf)** da **Universidade Federal do Paraná (UFPR)** e financiado pela **Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES)**. 
 
-Agradecimentos especiais aos orientadores **Prof. Fabiano Silva** e **Prof. [cite_start]Guilherme Alex Derenievicz** pelo suporte e direcionamento ao longo da pesquisa.
+Agradecimentos especiais aos orientadores **Prof. Fabiano Silva** e **Prof. Guilherme Alex Derenievicz** pelo suporte e direcionamento ao longo da pesquisa.
