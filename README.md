@@ -46,7 +46,7 @@ Para compilar e executar o resolvedor em um arquivo de instância, utilize os se
 ./executa_teste.sh <nome_da_instancia>
 ```
 
-O nome da instância deve constar nos arquivos do diretório `MINLPLib`.
+O nome da instância deve constar nos arquivos do diretório `MINLPLib/`.
 
 ## Licença
 
