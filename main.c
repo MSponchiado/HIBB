@@ -1,5 +1,4 @@
 #include "main.h"
-#include "instancia.h"
 
 double bsFunObj;
 int indiceFunObj;
@@ -12,7 +11,7 @@ int main(int argc, char *argv[]) {
   inicio = clock();
 
   int realD = 0, ncons, bbde_multnp, newbest[2], dimpart, log, seed;
-  int nbuscas, nbuscasinit, cont, achouotimo = 0;
+  int nbuscas, nbuscasinit, cont;
   int interD, omega, restr_tern, colapsa = 0, ciclos = 0;
   double porcfes = 0.0, porcnfevalbest = 0.0, dimpartmed;
   double mediacontrGAC = 0.0, mediacontrGACTotal = 0.0;
@@ -131,7 +130,7 @@ int main(int argc, char *argv[]) {
   // DEBUG_ERRO_INSTANCIACAO, DEBUG_MAX_STEPS_REACHED, MAX_STEPS_USED, nbuscas, tempo_usado);
 
   /*----------enquantou houver orçamento e caixas na fila---------*/
-  while ((heap_size(&fila) != 0)) {
+  while ((nfeval < maxfes) && (heap_size(&fila) != 0)) {
     ciclos++;
 
     // descongela
@@ -206,23 +205,8 @@ int main(int argc, char *argv[]) {
       box_free(cx2);
 
     // se o best é atualizado, zera o contador de estagnação
-    if ((newbest[0] == 1) || (newbest[1]) == 1) {
+    if ((newbest[0] == 1) || (newbest[1]) == 1)
       (*bestbox).cestag = 0;
-
-      if (((*bestbox).viol < 0.00000001) && (achouotimo == 0)) {
-        double erroabs = erro_abs((*bestbox).cost);
-        if (erroabs < 0.0001) {
-          // printf("!!!!!!!!!!!!!!!!!!!!!ACHOU O OTIMO!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-          fprintf(flog, "%.8e;%.8e;%d;%d;%g;%d;%ld;%ld;%d;%ld;%ld;%g;%ld;%ld;%g;%g;%llu;%llu;%llu;%d;%f\n",
-            (*bestbox).cost, (*bestbox).viol, realD, restr_tern, porcfes, ciclos,
-            heap_size(&fila), caixasexpl, colapsa, numdivmax, (*bestbox).numdiv,
-            porcnfevalbest, consisGAC, inconsisGAC, mediacontrGAC, mediacontrGACTotal,
-            DEBUG_ERRO_INSTANCIACAO, DEBUG_MAX_STEPS_REACHED, MAX_STEPS_USED, nbuscas, tempo_usado);
-          fflush(flog);
-          achouotimo = 1;
-        }
-      }
-    }
     else
       (*bestbox).cestag++;
 
@@ -237,6 +221,13 @@ int main(int argc, char *argv[]) {
     tempo_usado = ((double) (fim - inicio)) / CLOCKS_PER_SEC;
 
     if ((newbest[0] == 1) || (newbest[1]) == 1) {
+      // fprintf(flog, "%.8e;%.8e;%d;%d;%g;%d;%ld;%ld;%d;%ld;%ld;%g;%ld;%ld;%g;%g;%llu;%llu;%llu;%d;%f\n",
+      // (*bestbox).cost, (*bestbox).viol, realD, restr_tern, porcfes, ciclos,
+      // heap_size(&fila), caixasexpl, colapsa, numdivmax, (*bestbox).numdiv,
+      // porcnfevalbest, consisGAC, inconsisGAC, mediacontrGAC, mediacontrGACTotal,
+      // DEBUG_ERRO_INSTANCIACAO, DEBUG_MAX_STEPS_REACHED, MAX_STEPS_USED, nbuscas, tempo_usado);
+      fflush(flog);
+
       if (log) {
         printf("-------------------- novo best %g %g --------------------\n",
             (*bestbox).cost, (*bestbox).viol);

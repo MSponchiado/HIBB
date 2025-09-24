@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 nomeinst=${1}
-DIR_FUNCOES="../../minlplib-fr/funcoes"
-DIR_EPIFITAS="../../minlplib-fr/epifitas"
+DIR_FUNCOES="../MINLPLib/funcoes"
+DIR_EPIFITAS="../MINLPLib/epifitas"
 
 if [ -e instancia.c ]; then
   rm instancia.c
@@ -24,4 +24,4 @@ fi
 
 ln -s ${DIR_FUNCOES}/${nomeinst}.c instancia.c
 
-make clean && make all && ./inde fpar.dat fres.out flog.out fgac.out < ${DIR_EPIFITAS}/${nomeinst}.txt
+make clean && make all && ./executa fpar.dat fres.out flog.out fgac.out < ${DIR_EPIFITAS}/${nomeinst}.txt

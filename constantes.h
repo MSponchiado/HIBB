@@ -26,7 +26,7 @@
 #define EPSLVLMIN 1.0e-03   // valor mínimo a ser usado em caso de epsilon inicial 0
 
 // abandona a caixa quando sua maior dimensão atinge um tamanho mínimo DIM_MIN
-#define ABANDONA_CAIXA 1
+#define ABANDONA_CAIXA 0
 #define DIM_MIN 0.001
 
 // aborta execução do BBDE no caso de MEM_SUCC_BBDE gerações sem melhoria
@@ -34,7 +34,7 @@
 #define MEM_SUCC_BBDE 50
 
 // multiplicador do número de buscas em paralelo
-#define MULTNBUSCAS 0.5
+#define MULTNBUSCAS 2.0
 
 // prioridade do heap
 #define PRIORITY_BY_STAGNATION 0

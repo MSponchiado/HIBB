@@ -17,10 +17,24 @@ As principais características do HIBB incluem:
 
 ## Como Usar
 
+Siga os passos abaixo para configurar o ambiente, compilar e executar o otimizador HIBB.
+
 ### Pré-requisitos
 
-* Compilador C (gcc)
-* Make
+Certifique-se de que você tem as seguintes ferramentas instaladas:
+* `git`
+* Compilador C (por exemplo, `gcc`)
+* `make`
+
+### 1. Estrutura de Diretórios e Instâncias
+
+O HIBB requer um conjunto de instâncias de problemas para sua execução. Estas instâncias e seu processamento de entrada estão disponíveis no repositório [MINLPLib](https://github.com/MSponchiado/MINLPLib.git).
+
+É **essencial** que o diretório do HIBB e o diretório `MINLPLib` estejam localizados no mesmo nível (sejam "irmãos"), como mostra a estrutura abaixo:
+
+seu_diretorio_de_trabalho/
+├── HIBB/      <-- Repositório do otimizador
+└── MINLPLib/  <-- Repositório das instâncias
 
 ### Compilação e Execução
 

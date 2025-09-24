@@ -7,7 +7,7 @@ import multiprocessing as mp
 from os.path import dirname as dirname
 
 global program
-program = dirname(sys.argv[0])+'/configInst.sh'
+program = dirname(sys.argv[0])+'/config_inst.sh'
 
 def work(params):
     # """Defines the work unit on an input file"""
@@ -17,15 +17,19 @@ def work(params):
     return 0
 
 if __name__ == '__main__':
-    problema = sys.argv[1].rstrip() 
+    #Specify files to be worked with typical shell syntax and glob module
+    problemas = []
+    with open(sys.argv[1], 'r') as filehandle:
+        problemas = [t.rstrip() for t in filehandle.readlines()]
+
+    seed = sys.argv[2]
 
     tasks = []
-    for seed in range(1,16):
-        tasks.append([problema,str(seed)]);
+    for p in problemas:
+        tasks.append([p,str(seed)]);
 
     #Set up the parallel task pool to use all available processors
-    #count = mp.cpu_count()
-    count = 1
+    count = mp.cpu_count()
     pool = mp.Pool(processes=count)
 
     #Run the jobs

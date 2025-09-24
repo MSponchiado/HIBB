@@ -5,27 +5,28 @@ seed=${2}
 
 nome=$(basename ${problema} .txt)
 
-nfes="10000000"
-#nfes=$(grep "$nome;" ../../../minlplib/ate100dim-orcdim.txt | cut -d ";" -f2)
+np="5"
+nfes="100"
 bbde_np="10"
-bbde_nfes="10000"
+bbde_nfes="6000"
+pbest="0.25"
+npbest="0.5"
+tc="0.85"
 printlog="0"
 
 DIR=$(dirname ${0})
-DE="${DIR}/bin/inde-${nome}"
+DE="${DIR}/bin/executa_${nome}"
 
 DIR_RESULTADOS="${DIR}/resultados/${nome}"
 DIR_PARAMS="${DIR_RESULTADOS}/params"
 DIR_FITNESS="${DIR_RESULTADOS}/fitness"
 DIR_TEMPO="${DIR_RESULTADOS}/tempo"
 DIR_LOG="${DIR_RESULTADOS}/log"
-DIR_GAC="${DIR_RESULTADOS}/gac"
 
 mkdir -p ${DIR_PARAMS}
 mkdir -p ${DIR_FITNESS}
 mkdir -p ${DIR_TEMPO}
 mkdir -p ${DIR_LOG}
-mkdir -p ${DIR_GAC}
 
 echo "INICIO; ${nome}; $(date)"
 
@@ -34,16 +35,20 @@ for x in ${nfes}; do
   fitness="${DIR_FITNESS}/${nome}_nfes${x}_s${seed}.fit"
   tempo="${DIR_TEMPO}/${nome}_nfes${x}_s${seed}.tempo"
   log="${DIR_LOG}/${nome}_nfes${x}_s${seed}.log"
-  gac="${DIR_GAC}/${nome}_nfes${x}_s${seed}.gac"
   echo -n "" > ${param}
+  echo "${np}" >> ${param}
   echo "${x}" >> ${param}
   echo "${bbde_np}" >> ${param}
   echo "${bbde_nfes}" >> ${param}
+  echo "${pbest}" >> ${param}
+  echo "${npbest}" >> ${param}
+  echo "${tc}" >> ${param}
   echo "${printlog}" >> ${param}
   echo "${seed}" >> ${param}
 
-  ( time ${DE} ${param} ${fitness} ${log} ${gac} < ${problema} ) > ${tempo} &>> ${tempo}
+  ( time ${DE} ${param} ${fitness} ${log} < ${problema} ) > ${tempo} &>> ${tempo}
 
 done
 
 echo "FINAL; ${nome}; $(date)"
+
