@@ -43,8 +43,10 @@ seu_diretorio_de_trabalho/
 Para compilar e executar o resolvedor em um arquivo de instância, utilize os seguintes comandos:
 
 ```bash
-./executa.sh <nome_da_instancia>
+./executa_teste.sh <nome_da_instancia>
 ```
+
+O nome da instância deve constar nos arquivos do diretório `MINLPLib`.
 
 ## Licença
 
