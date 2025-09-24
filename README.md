@@ -32,9 +32,11 @@ O HIBB requer um conjunto de instâncias de problemas para sua execução. Estas
 
 É **essencial** que o diretório do HIBB e o diretório `MINLPLib` estejam localizados no mesmo nível (sejam "irmãos"), como mostra a estrutura abaixo:
 
+```
 seu_diretorio_de_trabalho/
 ├── HIBB/      <-- Repositório do otimizador
 └── MINLPLib/  <-- Repositório das instâncias
+```
 
 ### Compilação e Execução
 
