@@ -5,13 +5,9 @@ seed=${2}
 
 nome=$(basename ${problema} .txt)
 
-np="5"
-nfes="100"
+nfes="10000000"
 bbde_np="10"
-bbde_nfes="6000"
-pbest="0.25"
-npbest="0.5"
-tc="0.85"
+bbde_nfes="10000"
 printlog="0"
 
 DIR=$(dirname ${0})
@@ -39,13 +35,9 @@ for x in ${nfes}; do
   log="${DIR_LOG}/${nome}_nfes${x}_s${seed}.log"
   gac="${DIR_GAC}/${nome}_nfes${x}_s${seed}.gac"
   echo -n "" > ${param}
-  echo "${np}" >> ${param}
   echo "${x}" >> ${param}
   echo "${bbde_np}" >> ${param}
   echo "${bbde_nfes}" >> ${param}
-  echo "${pbest}" >> ${param}
-  echo "${npbest}" >> ${param}
-  echo "${tc}" >> ${param}
   echo "${printlog}" >> ${param}
   echo "${seed}" >> ${param}
 
