@@ -5,7 +5,7 @@
 /*----------Inicialização de arquivos---------------------------*/
 void arquiv_init(int argc, FILE *fpar, FILE *fout, FILE *flog, FILE *fgac) {
   if (argc != 5){
-    printf("\nUso : inde <input-file> <output-file> <fitness-file><gac-log-file>\n");
+    printf("\nUso : executa <input-file> <output-file> <solution-file> <gac-log-file>\n");
     exit(1);
   }
 

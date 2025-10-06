@@ -7,7 +7,7 @@ import multiprocessing as mp
 from os.path import dirname as dirname
 
 global program
-program = dirname(sys.argv[0])+'/config_inst.sh'
+program = dirname(sys.argv[0])+'/config_parametros.sh'
 
 def work(params):
     # """Defines the work unit on an input file"""

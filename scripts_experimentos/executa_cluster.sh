@@ -2,8 +2,8 @@
 
 DIR_BIN="./bin"
 DIR_BASE="./../.."
-DIR_EPIF="${DIR_BASE}/minlplib/epifitas"
-DIR_AMPL="${DIR_BASE}/minlplib/funcoes"
+DIR_EPIF="${DIR_BASE}/MINLPLib/epifitas"
+DIR_AMPL="${DIR_BASE}/MINLPLib/funcoes"
 LNK_SIMB="../instancia.c"
 LST_INST="./instancias.txt"
 

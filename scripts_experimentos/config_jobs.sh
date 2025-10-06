@@ -25,7 +25,7 @@ echo \
 #SBATCH -c 3
 #SBATCH -N 1
 #SBATCH -t 168:00:00
-#SBATCH -p nodes
+#SBATCH -p cpu
 ${RUN} ${l} ${s}
 " > ${job}
 
