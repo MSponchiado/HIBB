@@ -49,7 +49,7 @@ for x in ${nfes}; do
   echo "${printlog}" >> ${param}
   echo "${seed}" >> ${param}
 
-  ( time ${DE} ${param} ${solucoes} ${gac} < ${problema} ) > ${tempo} &>> ${tempo}
+  ( time ${DE} ${param} ${solucoes} ${log} ${gac} < ${problema} ) > ${tempo} &>> ${tempo}
 
 done
 
