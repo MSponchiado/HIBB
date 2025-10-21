@@ -231,13 +231,13 @@ int main(int argc, char *argv[]) {
       if (log) {
         printf("-------------------- novo best %g %g --------------------\n",
             (*bestbox).cost, (*bestbox).viol);
-        printf("c%g;v%g;D%d;rt%d;fes%.1f;cic%d;hs%ld;cxe%ld;col%d;",
-          (*bestbox).cost, (*bestbox).viol, realD, restr_tern, porcfes, ciclos,
-          heap_size(&fila), caixasexpl, colapsa);
-        printf("ndmax%ld;ndbest%ld;pbest%.1f;gac%ld;%ld;redGAC%g;%g;%llu;%llu;%llu;%d;%f\n",
-          numdivmax, (*bestbox).numdiv, porcnfevalbest, consisGAC, inconsisGAC,
-          mediacontrGAC, mediacontrGACTotal,
-          DEBUG_ERRO_INSTANCIACAO, DEBUG_MAX_STEPS_REACHED, MAX_STEPS_USED, nbuscas, tempo_usado);
+        printf("c%g;v%g;D%d;rt%d;cic%d;fes%.1f;pbest%.1f;",
+          (*bestbox).cost, (*bestbox).viol, realD, restr_tern, ciclos, porcfes, porcnfevalbest); 
+        printf("gac%ld;%ld;redGAC%g;%g;%llu;%llu;%llu;%f;", 
+          consisGAC, inconsisGAC, mediacontrGAC, mediacontrGACTotal,
+          DEBUG_ERRO_INSTANCIACAO, DEBUG_MAX_STEPS_REACHED, MAX_STEPS_USED, tempo_usado);
+        printf("cxe%ld;hs%ld;col%d;ndmax%ld;ndbest%ld;nbuscas%d;\n",
+          caixasexpl, heap_size(&fila), colapsa, numdivmax, (*bestbox).numdiv, nbuscas);      
       }
     }
 
@@ -254,11 +254,12 @@ int main(int argc, char *argv[]) {
   if (newbest[0] == 1 && log)
     printf("Melhorou com BL final\n");
 
-  fprintf(fout, "%.8e;%.8e;%d;%d;%g;%d;%ld;%ld;%d;%ld;%ld;%g;%ld;%ld;%g;%g;%llu;%llu;%llu;%d;%d;%f\n",
-    (*bestbox).cost, (*bestbox).viol, realD, restr_tern, porcfes, ciclos,
-    heap_size(&fila), caixasexpl, colapsa, numdivmax, (*bestbox).numdiv,
-    porcnfevalbest, consisGAC, inconsisGAC, mediacontrGAC, mediacontrGACTotal,
-    DEBUG_ERRO_INSTANCIACAO, DEBUG_MAX_STEPS_REACHED, MAX_STEPS_USED, newbest[0], nbuscas, tempo_usado);
+  fprintf(fout, "%.8e;%.8e;%d;%d;%d;%g;%g;%ld;%ld;%g;%g;%llu;%llu;%llu;%f;%ld;%ld;%d;%ld;%ld;%d;%d\n",
+    (*bestbox).cost, (*bestbox).viol, realD, restr_tern, ciclos, 
+    porcfes, porcnfevalbest, consisGAC, inconsisGAC, mediacontrGAC, mediacontrGACTotal,
+    DEBUG_ERRO_INSTANCIACAO, DEBUG_MAX_STEPS_REACHED, MAX_STEPS_USED, tempo_usado,
+    caixasexpl, heap_size(&fila), colapsa, numdivmax, (*bestbox).numdiv,
+    nbuscas, newbest[0]);
 
   fclose(flog);
   fclose(fout);

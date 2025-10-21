@@ -1,11 +1,14 @@
-10000000
+2000000
 10
-10000
+2000
 1
 1
 
-Fator de multiplicacao do numero maximo de avaliacoes de fitness
-BBDE - Fator de multiplicacao do tamanho de NP -> NP = D * X
-BBDE - Fator de multiplicacao do numero maximo de avaliacoes de fitness
-printlog - imprime log de execução na tela
-Seed
+multmaxfes      - Fator de multiplicacao do número maximo de solucoes 
+                avaliadas (orcamento geral)
+bbde_multnp     - Fator de multiplicacao do número de solucoes exploradas 
+                simultaneamente a cada busca local (tamanho populacao NP)
+bbde_multmaxfes - Fator de multiplicacao do numero maximo de solucoes exploradas 
+                a cada busca local (orcamento busca local)
+printlog        - imprime log de execução na tela
+seed

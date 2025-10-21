@@ -1,1 +1,1 @@
-../MINLPLib/funcoes/chance.c
+../MINLPLib/funcoes/alkyl.c

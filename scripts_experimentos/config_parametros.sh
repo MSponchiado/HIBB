@@ -5,10 +5,13 @@ seed=${2}
 
 nome=$(basename ${problema} .txt)
 
-nfes="10000000"
-bbde_np="10"
-bbde_nfes="10000"
-printlog="0"
+nfes="2000000"    # Fator de multiplicacao do número maximo de solucoes 
+                  # avaliadas (orcamento geral)
+bbde_np="10"      # Fator de multiplicacao do número de solucoes exploradas 
+                  # simultaneamente a cada busca local (tamanho populacao NP)
+bbde_nfes="2000"  # Fator de multiplicacao do numero maximo de solucoes exploradas 
+                  # a cada busca local (orcamento busca local)
+printlog="0"      # Imprime log de execução na tela
 
 DIR=$(dirname ${0})
 DE="${DIR}/bin/executa_${nome}"
@@ -34,6 +37,7 @@ for x in ${nfes}; do
   tempo="${DIR_TEMPO}/${nome}_nfes${x}_s${seed}.tempo"
   log="${DIR_LOG}/${nome}_nfes${x}_s${seed}.log"
   gac="${DIR_GAC}/${nome}_nfes${x}_s${seed}.gac"
+
   echo -n "" > ${param}
   echo "${x}" >> ${param}
   echo "${bbde_np}" >> ${param}
@@ -46,4 +50,3 @@ for x in ${nfes}; do
 done
 
 echo "FINAL; ${nome}; $(date)"
-
